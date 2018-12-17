@@ -29,12 +29,6 @@ public class CartServiceImpl implements CartService {
         this.productRepository = productRepository;
     }
 
-    /**
-     * If product is in the map just increment quantity by 1.
-     * If product is not in the map with, add it with quantity 1
-     *
-     * @param product
-     */
     @Override
     public void addProduct(Product product) {
         if (products.containsKey(product)) {
@@ -44,12 +38,6 @@ public class CartServiceImpl implements CartService {
         }
     }
 
-    /**
-     * If product is in the map with quantity > 1, just decrement quantity by 1.
-     * If product is in the map with quantity 1, remove it from map
-     *
-     * @param product
-     */
     @Override
     public void removeProduct(Product product) {
         if (products.containsKey(product)) {
@@ -61,9 +49,6 @@ public class CartServiceImpl implements CartService {
         }
     }
 
-    /**
-     * @return unmodifiable copy of the map
-     */
     @Override
     public Map<Product, Integer> getProductsInCart() {
         return Collections.unmodifiableMap(products);

@@ -21,7 +21,7 @@ public class App extends SpringBootServletInitializer {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("it.akademija"))
+                .apis(RequestHandlerSelectors.basePackage("it.akademija.exam"))
                 .build();
     }
 
