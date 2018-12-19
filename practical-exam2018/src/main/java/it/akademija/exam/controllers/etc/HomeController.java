@@ -1,4 +1,4 @@
-package it.akademija.exam.controllers;
+package it.akademija.exam.controllers.etc;
 
 import it.akademija.exam.Pager;
 import it.akademija.exam.model.Product;

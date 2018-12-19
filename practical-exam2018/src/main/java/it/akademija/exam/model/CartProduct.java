@@ -2,17 +2,21 @@ package it.akademija.exam.model;
 
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Component
+@Entity
 public class CartProduct {
 
     private Integer quantity;
 
+    @ManyToOne
+    private Product product;
+
     @Id
-    private Long id;
+    public Long id;
 
     @ManyToOne
     @JoinColumn(name = "cart_id")

@@ -3,10 +3,8 @@ package it.akademija.exam.controllers;
 import it.akademija.exam.model.Product;
 import it.akademija.exam.model.ProductRest;
 import it.akademija.exam.model.ProductServ;
-import it.akademija.exam.model.User;
 import it.akademija.exam.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,15 +15,15 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 public class ProductController {
 
-    //metodai:get product, get products,
-
     @Autowired
     private ProductService productService;
+
+
+    @RequestMapping(path = "/product", method = RequestMethod.GET)
 
     @RequestMapping(path = "/products", method = RequestMethod.GET)
     public List<ProductRest> getProducts() {
@@ -80,8 +78,6 @@ public class ProductController {
         return modelAndView;
     }
 
-
-
     @RequestMapping(path = "/product", method = RequestMethod.PUT)
     public String addNewProduct(@RequestBody Product product){
         productService.createProduct(new ProductServ(
@@ -92,6 +88,8 @@ public class ProductController {
         ));
         return "New product was added";
     }
+
+
 
     public ProductService getProductService() {
         return productService;
