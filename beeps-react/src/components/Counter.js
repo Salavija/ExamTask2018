@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 class Counter extends Component {
     constructor(props) {
         super(props);
-        this.state = { value: this.props.productQuantity };
+        this.state = { value: this.props.countryQuantity };
         this.increment = this.increment.bind(this);
         this.decrement = this.decrement.bind(this);
     }

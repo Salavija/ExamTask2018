@@ -66,30 +66,30 @@ class Header extends Component {
         );
     }
     
-    goProducts = () => this.props.history.push("products");
+    goCountries = () => this.props.history.push("Countries");
 // o patį mygtuką kur nors į render() metodą
 
 
     render() {
         let cartItems;
-        cartItems = this.state.cart.map(product => {
+        cartItems = this.state.cart.map(country => {
             return (
-                <li className="cart-item" key={product.name}>
-                    <img className="product-image" src={product.image} alt=""/>
-                    <div className="product-info">
-                        <p className="product-name">{product.name}</p>
-                        <p className="product-price">{product.price}</p>
+                <li className="cart-item" key={country.name}>
+                    <img className="country-image" src={country.image} alt=""/>
+                    <div className="country-info">
+                        <p className="country-name">{country.name}</p>
+                        <p className="country-price">{country.price}</p>
                     </div>
-                    <div className="product-total">
+                    <div className="country-total">
                         <p className="quantity">
-                            {product.quantity} {product.quantity > 1 ? "Nos." : "No."}{" "}
+                            {country.quantity} {country.quantity > 1 ? "Nos." : "No."}{" "}
                         </p>
-                        <p className="amount">{product.quantity * product.price}</p>
+                        <p className="amount">{country.quantity * country.price}</p>
                     </div>
                     <a
-                        className="product-remove"
-                        href="/product.remove"
-                        onClick={this.props.removeProduct.bind(this, product.id)}
+                        className="country-remove"
+                        href="/country.remove"
+                        onClick={this.props.removecountry.bind(this, country.id)}
                     >
                         ×
           </a>
@@ -117,12 +117,12 @@ class Header extends Component {
         <div className="container">
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <a className="navbar-brand" href="#">Exam</a>
-                    <button onClick={this.goProducts}
+                    <button onClick={this.goCountries}
                      className="btn btn-primary"
                      role="button">
-                     Products
+                     Countries
                     </button>
-                 <button onClick={this.goProducts} className="navbar-toggler"data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                 <button onClick={this.goCountries} className="navbar-toggler"data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
@@ -137,7 +137,7 @@ class Header extends Component {
                              this.state.mobileSearch ? "search-form active" : "search-form"
                          }>
                          <input className="form-control mr-sm-2" type="search"
-                             ref="searchBox" placeholder="Search EXAM products"
+                             ref="searchBox" placeholder="Search EXAM Countries"
                              onChange={this.props.handleSearch}></input>
                          <button className="btn btn-outline-primary my-2 my-sm-0" className="search-button"
                              type="submit" onClick={this.handleSubmit.bind(this)}>Search</button>

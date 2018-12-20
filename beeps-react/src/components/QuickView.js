@@ -47,13 +47,13 @@ class QuickView extends Component {
                     <div className="quick-view">
                         <div className="quick-view-image">
                             <img
-                                src={this.props.product.image}
-                                alt={this.props.product.name}
+                                src={this.props.country.image}
+                                alt={this.props.country.name}
                             />
                         </div>
                         <div className="quick-view-details">
-                            <span className="product-name">{this.props.product.name}</span>
-                            <span className="product-price">{this.props.product.price}</span>
+                            <span className="country-name">{this.props.country.name}</span>
+                            <span className="country-price">{this.props.country.price}</span>
                         </div>
                     </div>
                 </div>

@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import Product from "./Product";
-import LoadingProducts from "../loaders/Products";
+import Country from "./Country";
+import LoadingCountries from "../loaders/Countries";
 import NoResults from "../empty-states/NoResults";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
+import Country from "./Country";
 
-class Products extends Component {
+class Countries extends Component {
     render() {
-        let productsData;
+        let CountriesData;
         let term = this.props.searchTerm;
 
         function searchingFor(term) {
@@ -14,18 +15,18 @@ class Products extends Component {
                 return x.name.toLowerCase().includes(term.toLowerCase()) || !term;
             };
         }
-        productsData = this.props.productsList
+        CountriesData = this.props.CountriesList
             .filter(searchingFor(term))
-            .map(product => {
+            .map(Country => {
                 return (
-                    <Product
-                        key={product.id}
-                        price={product.price}
-                        name={product.name}
-                        image={product.image}
-                        id={product.id}
-                        addToCart={this.props.addToCart}
-                        productQuantity={this.props.productQuantity}
+                    <Country
+                        key={Country.id}
+                        price={Country.price}
+                        name={Country.name}
+                        image={Country.image}
+                        id={Country.id}
+                        addToHoliday={this.props.addToHoliday}
+                        CountryQuantity={this.props.CountryQuantity}
                         updateQuantity={this.props.updateQuantity}
                         openModal={this.props.openModal}
                     />
@@ -34,9 +35,9 @@ class Products extends Component {
 
         // Empty and Loading States
         let view;
-        if (productsData.length <= 0 && !term) {
-            view = <LoadingProducts />;
-        } else if (productsData.length <= 0 && term) {
+        if (CountriesData.length <= 0 && !term) {
+            view = <LoadingCountries />;
+        } else if (CountriesData.length <= 0 && term) {
             view = <NoResults />;
         } else {
             view = (
@@ -45,14 +46,14 @@ class Products extends Component {
                     transitionEnterTimeout={500}
                     transitionLeaveTimeout={300}
                     component="div"
-                    className="products"
+                    className="Countries"
                 >
-                    {productsData}
+                    {CountriesData}
                 </CSSTransitionGroup>
             );
         }
-        return <div className="products-wrapper">{view}</div>;
+        return <div className="Countries-wrapper">{view}</div>;
     }
 }
 
-export default Products;
+export default Countries;
