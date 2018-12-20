@@ -1,8 +1,8 @@
 # ExamTask2018
 
-**practical-exam2018 - is the main folder for the app**
+**beeps-spring - is the main folder for the app**
 
-ReactFiles - is the place, there all ReactJS App creation happened. Finished product was built and moved to the main practical-exam2018 folder.
+beeps-react - is the place, there all ReactJS App creation happened. Finished product was built and moved to the main beeps-spring folder.
 
 Project was made with:
 Java 8
