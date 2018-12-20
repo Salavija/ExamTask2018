@@ -10,14 +10,13 @@ class Country extends Component {
             isAdded: false
         };
     }
-    addToHoliday(name, info, image, type, flagIsUp) {
+    addToHoliday(name,  flagImage, prezident, flagIsUp) {
         this.setState(
             {
                 selectedCountry: {
                     name: name,
-                    info: info,
-                    image: image,
-                    type: type,
+                    flagImage: flagImage,
+                    prezident: prezident,
                     flagIsUp: flagIsUp
                 }
             },
@@ -39,14 +38,14 @@ class Country extends Component {
             }
         );
     }
-    quickView(name, info, image, type, flagIsUp) {
+    quickView(name,  image, prezident, flagIsUp) {
         this.setState(
             {
                 quickViewCountry: {
                     name: name,
-                    info: info,
+                     
                     image: image,
-                    type: type,
+                    prezident: prezident,
                     flagIsUp: flagIsUp
                 }
             },
@@ -58,8 +57,7 @@ class Country extends Component {
     render() {
         let name = this.props.name;
         let image = this.props.image;
-        let info = this.props.info;
-        let type = this.props.type;
+        let prezident = this.props.prezident;
         let flagIsUp = this.props.flagIsUp;
         return (
             <div className="country">
@@ -71,38 +69,15 @@ class Country extends Component {
                             this,
                             image,
                             name,
-                            info,
-                            type,
+                            
+                            prezident,
                             flagIsUp
                         )}
                     />
                 </div>
                 <h4 className="country-name">{this.props.name}</h4>
-                <p className="country-info">{this.props.info}</p>
-                <Counter
-                    countryflagIsUp={flagIsUp}
-                    updateflagIsUp={this.props.updateflagIsUp}
-                    resetflagIsUp={this.resetflagIsUp}
-                />
-                <div className="country-action">
-                    <button
-                        className={!this.state.isAdded ? "" : "added"}
-                        type="button"
-                        onClick={this.addToHolidays.bind(
-                            this,
-                            image,
-                            name,
-                            info,
-                            type,
-                            flagIsUp
-                        )}
-                    >
-                        {!this.state.isAdded ? "ADD TO HOLIDAY" : "✔ ADDED"}
-                    </button>
-                </div>
-            </div>
-        );
+            </div>)
     }
-}
-
+}     
+                    
 export default Country;

@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import Country from "./Country";
-import LoadingCountries from "../loaders/Countries";
-import NoResults from "../empty-states/NoResults";
+import LoadingCountries from "./loaders/Countries";
+import NoResults from "./empty-states/NoResults";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
-import Country from "./Country";
 
 class Countries extends Component {
     render() {
@@ -21,19 +20,14 @@ class Countries extends Component {
                 return (
                     <Country
                         key={Country.id}
-                        price={Country.price}
                         name={Country.name}
                         image={Country.image}
-                        id={Country.id}
+                        info={Country.info}
                         addToHoliday={this.props.addToHoliday}
-                        CountryQuantity={this.props.CountryQuantity}
-                        updateQuantity={this.props.updateQuantity}
                         openModal={this.props.openModal}
                     />
                 );
             });
-
-        // Empty and Loading States
         let view;
         if (CountriesData.length <= 0 && !term) {
             view = <LoadingCountries />;

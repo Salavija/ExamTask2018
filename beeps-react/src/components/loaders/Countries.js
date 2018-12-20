@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Country from "./Country";
+import Country from "./Country/Country";
 
-class LoadingCountrys extends Component {
+class LoadingCountries extends Component {
   render() {
     return (
       <div className="Countrys loading">
@@ -18,4 +18,4 @@ class LoadingCountrys extends Component {
   }
 }
 
-export default LoadingCountrys;
+export default LoadingCountries;

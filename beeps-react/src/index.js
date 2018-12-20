@@ -4,7 +4,7 @@ import App from './App';
 import AppContainer from './AppContainer';
 import { Switch, Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
-import Products from "./components/Products";
+import Countries from "./components/Country/Countries";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const NoMatch = (props) => {
@@ -19,8 +19,8 @@ ReactDOM.render((
         <AppContainer>
             <Switch>
                 <Route exact path='/' component={App} />
-                <Route path="/products/:id" component={Products.id} />
-                < Route path="/products" component={Products} />
+                <Route path="/Countries/:id" component={Countries.id} />
+                < Route path="/Countries" component={Countries} />
                 <Route path="*" component={NoMatch} />
                 <Route component={NoMatch} />
             </Switch>

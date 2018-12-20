@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import ScrollBar from "./ScrollBar";
-import EmptyCart from "../empty-states/EmptyCart";
-import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 import { findDOMNode } from "react-dom";
+import Axios from "axios";
 
 class Header extends Component {
     constructor(props) {
@@ -67,51 +65,22 @@ class Header extends Component {
     }
     
     goCountries = () => this.props.history.push("Countries");
-// o patį mygtuką kur nors į render() metodą
-
 
     render() {
-        let cartItems;
-        cartItems = this.state.cart.map(country => {
-            return (
-                <li className="cart-item" key={country.name}>
-                    <img className="country-image" src={country.image} alt=""/>
-                    <div className="country-info">
-                        <p className="country-name">{country.name}</p>
-                        <p className="country-price">{country.price}</p>
-                    </div>
-                    <div className="country-total">
-                        <p className="quantity">
-                            {country.quantity} {country.quantity > 1 ? "Nos." : "No."}{" "}
-                        </p>
-                        <p className="amount">{country.quantity * country.price}</p>
-                    </div>
-                    <a
-                        className="country-remove"
-                        href="/country.remove"
-                        onClick={this.props.removecountry.bind(this, country.id)}
-                    >
-                        ×
-          </a>
-                </li>
-            );
-        });
-        let view;
-        if (cartItems.length <= 0) {
-            view = <EmptyCart />;
-        } else {
-            view = (
-                <CSSTransitionGroup
-                    transitionName="fadeIn"
-                    transitionEnterTimeout={500}
-                    transitionLeaveTimeout={300}
-                    component="ul"
-                    className="cart-items"
-                >
-                    {cartItems}
-                </CSSTransitionGroup>
-            );
+        let deleteCountry = () => {
+            let body = this.state;
+            Axios.delete("http:.//localhost:8081/model/Country" + 
+            this.props.name)
+            .then( res => {
+                console.log("Form is submitted");
+                console.log(res);
+            }).catch(
+                error => {
+                    console.log("error");
+                }
+            )
         }
+
  return (
     <header>
         <div className="container">
@@ -137,67 +106,12 @@ class Header extends Component {
                              this.state.mobileSearch ? "search-form active" : "search-form"
                          }>
                          <input className="form-control mr-sm-2" type="search"
-                             ref="searchBox" placeholder="Search EXAM Countries"
+                             ref="searchBox" placeholder="Search Countries"
                              onChange={this.props.handleSearch}></input>
                          <button className="btn btn-outline-primary my-2 my-sm-0" className="search-button"
                              type="submit" onClick={this.handleSubmit.bind(this)}>Search</button>
                         </form>
                     </div>
-                 <div className="cart">
-                     <div className="cart-info">
-                         <table>
-                             <tbody>
-                                 <tr>
-                                     <td>No. of items</td>
-                                     <td>:</td>
-                                     <td>
-                                         <strong>{this.props.totalItems}</strong>
-                                     </td>
-                                 </tr>
-                                 <tr>
-                                     <td>Sub Total</td>
-                                     <td>:</td>
-                                     <td>
-                                         <strong>{this.props.total}</strong>
-                                     </td>
-                                 </tr>
-                             </tbody>
-                         </table>
-                     </div>
-                     <a
-                         className="cart-icon"
-                         href="#"
-                         onClick={this.handleCart.bind(this)}
-                         ref="cartButton"
-                     >
-                         <img
-                             className={this.props.cartBounce ? "tada" : " "}
-                             src="https://res.cloudinary.com/sivadass/image/upload/v1493548928/icons/bag.png"
-                             alt="Cart"
-                         />
-                         {this.props.totalItems ? (
-                             <span className="cart-count">{this.props.totalItems}</span>
-                         ) : (
-                                 ""
-                             )}
-                     </a>
-                     <div
-                         className={
-                             this.state.showCart ? "cart-preview active" : "cart-preview"
-                         }
-                         ref="cartPreview"
-                     >
-                         <ScrollBar>{view}</ScrollBar>
-                         <div className="action-block">
-                             <button
-                                 type="button"
-                                 className={this.state.cart.length > 0 ? " " : "disabled"}
-                             >
-                                 PROCEED TO CHECKOUT
-                </button>
-                         </div>
-                     </div>
-                 </div>
                 </nav>
           </div>
     </header>
