@@ -1,4 +1,4 @@
-package it.akademija.exam.controllers.etc;
+package it.sventes.controllers.etc;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.web.bind.annotation.GetMapping;

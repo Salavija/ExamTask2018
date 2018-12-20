@@ -1,4 +1,4 @@
-package it.akademija.exam;
+package it.sventes;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
