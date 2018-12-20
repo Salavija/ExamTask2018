@@ -23,8 +23,6 @@ public class ProductController {
     private ProductService productService;
 
 
-    @RequestMapping(path = "/product", method = RequestMethod.GET)
-
     @RequestMapping(path = "/products", method = RequestMethod.GET)
     public List<ProductRest> getProducts() {
         List<ProductRest> products = new ArrayList<>();

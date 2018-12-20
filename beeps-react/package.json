@@ -1,5 +1,5 @@
 {
-  "name": "exam2018",
+  "name": "beeps-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,8 +12,8 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "axios": "0.16.1",
-    "react-custom-scrollbars": "^4.1.1",
-    "react-transition-group": "^1.1.2"
+    "react-transition-group": "^1.1.2",
+    "react-custom-scrollbars": "^4.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
