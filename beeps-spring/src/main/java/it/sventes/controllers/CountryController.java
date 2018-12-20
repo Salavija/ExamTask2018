@@ -4,6 +4,8 @@ import it.sventes.model.country.Country;
 import it.sventes.model.country.CountryRest;
 import it.sventes.model.country.CountryServ;
 import it.sventes.services.CountryService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,11 +18,14 @@ import java.util.List;
 @RestController
 public class CountryController {
 
+    private static Logger logger = LoggerFactory.getLogger(CountryController.class);
+
     @Autowired
     private CountryService countryService;
 
     @RequestMapping(path = "/countries", method = RequestMethod.GET)
     public List<CountryRest> getCountries() {
+        logger.info("Country list created");
         List<CountryRest> products = new ArrayList<>();
         List<CountryServ> serviceCountries = countryService.getCountry();
         for (CountryServ country : serviceCountries) {
@@ -38,6 +43,7 @@ public class CountryController {
 
     @RequestMapping(path = "/country", method = RequestMethod.PUT)
     public String addNewCountry(@RequestBody Country country){
+        logger.info("Country added");
         countryService.createCountry(new CountryServ(
                 country.getName(),
                 country.getFlagImageH(),
